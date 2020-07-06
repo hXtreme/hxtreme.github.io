@@ -22,7 +22,7 @@ title: Harsh Parekh
 logo: /assets/img/logo.png
 email: harsh_parekh@outlook.com
 description: >- # this means to ignore newlines until "baseurl:"
-  This is my personal website where I share things I find interesting, 
+  This is my personal website where I share things I find interesting,
   stuff I do or like, and more.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://harsh.parekh.page" # the base hostname & protocol for your site, e.g. http://example.com
