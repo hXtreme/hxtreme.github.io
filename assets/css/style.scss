@@ -27,3 +27,22 @@
 #logo:hover {
   border-color: $secondary-highlight-color;
 }
+
+@keyframes toast-popup {
+  0%   {bottom: -2.5rem;}
+  15%  {bottom: 2rem;}
+  75%  {bottom: 2rem;}
+  100% {bottom: -2.5rem;}
+}
+
+#toast {
+  position: fixed;
+  left: 1rem;
+  color: $primary-text-color;
+  padding: 8px 15px;
+  border-radius: 2px;
+  border: 1px solid $secondary-text-color;
+  animation-name: toast-popup;
+  animation-timing-function: linear;
+  animation-duration: 4s;
+}
