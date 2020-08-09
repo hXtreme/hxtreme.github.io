@@ -1,11 +1,17 @@
 @import "fonts";
 @import "rouge-github";
 
+$primary-text-color: rgb(114, 114, 114);
+$secondary-text-color: rgb(119, 119, 119);
+
+$primary-highlight-color: rgb(38, 124, 185);
+$secondary-highlight-color: rgb(0, 102, 153);
+
 body {
   background-color: #fff;
   padding:50px;
   font: 14px/1.5 "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color:#727272;
+  color: $primary-text-color;
   font-weight:400;
 }
 
@@ -35,23 +41,23 @@ h3, h4, h5, h6 {
 }
 
 a {
-  color:#267CB9;
+  color: $primary-highlight-color;
   text-decoration:none;
 }
 
 a:hover, a:focus {
-  color:#069;
+  color: $secondary-highlight-color;
 }
 
 a small {
   font-size:11px;
-  color:#777;
+  color: $secondary-text-color; 
   margin-top:-0.3em;
   display:block;
 }
 
 a:hover small {
-  color:#777;
+  color: $secondary-text-color;
 }
 
 .wrapper {

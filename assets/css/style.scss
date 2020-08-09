@@ -19,7 +19,11 @@
 }
 
 #logo {
-  border: solid medium #267CB9;
+  border: solid medium $primary-highlight-color;
   border-radius: 50%;
   max-width: 70%;
+}
+
+#logo:hover {
+  border-color: $secondary-highlight-color;
 }
