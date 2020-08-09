@@ -20,6 +20,20 @@
     <p class="view"><a href="{{ site.github.owner_url }}">View My GitHub Profile</a></p>
   {% endif %}
 
+  {% if site.twitter_username or site.linkedin_profile %}
+    <small>
+      Find me on social media
+    </small>
+    <ul id="social-links">
+      {% if site.twitter_username %}
+        <li><a href="https://twitter.com/{{ site.twitter_username }}"><i class="fa fa-twitter-square fa-2x"></i></a></li>
+      {% endif %}
+      {% if site.linkedin_profile %}
+        <li><a href="https://www.linkedin.com/in/{{ site.linkedin_profile }}"><i class="fa fa-linkedin-square fa-2x"></i></a></li>
+      {% endif %}
+    </ul>
+  {% endif %}
+
   {% if site.show_downloads %}
     <ul>
       <li><a href="{{ site.github.zip_url }}">Download <strong>ZIP File</strong></a></li>

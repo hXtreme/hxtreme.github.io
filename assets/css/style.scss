@@ -2,3 +2,18 @@
 ---
 
 @import "{{ site.theme }}";
+
+#social-links {
+  display: grid;
+  background: inherit;
+  position: inherit;
+  grid-template-columns: repeat(10, auto);
+  border: none;
+  height: auto;
+  min-height: 20px;
+}
+
+#social-links > li{
+  border: none;
+  width: min-content;
+}
