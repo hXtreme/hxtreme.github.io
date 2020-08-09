@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="{{ site.lang | default: "en-US" }}">
-  {%- include head.html -%}
-  <body>
-    <div class="wrapper">
-      {%- include header.html -%}
-      <section>{{ content }}</section>
-      {%- include footer.html -%}
-    </div>
-    <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
-    {%- include analytics.html -%}
-  </body>
-</html>
+---
+layout: blank
+---
+
+{%- include header.html -%}
+<section>{{ content }}</section>
