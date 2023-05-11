@@ -21,7 +21,8 @@
 		"vscode": {
 			"extensions": [
 				"eamodio.gitlens",
-				"chrisbibby.hide-git-ignored"
+				"chrisbibby.hide-git-ignored",
+				"EditorConfig.EditorConfig"
 			]
 		}
 	}
