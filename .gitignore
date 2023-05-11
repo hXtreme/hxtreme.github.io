@@ -1,4 +1,11 @@
+# Ruby files
+.bundle
+vendor
+
+# Build files
 _site/
+
+# Jekyll files
 .sass-cache/
 .jekyll-cache/
 .jekyll-metadata
