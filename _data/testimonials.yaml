@@ -1,0 +1,7 @@
+people:
+- &aaditya
+  name: "Aaditya Naik"
+
+testimonials:
+  - author: *aaditya
+    testimony: "I listened to your advice and now everything works as it should."
