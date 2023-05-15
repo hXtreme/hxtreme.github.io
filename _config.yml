@@ -30,6 +30,10 @@ twitter_username: ThatsRealHarsh
 linkedin_profile: harsh-parekh-8b3327103
 github_username: hXtreme
 
+collections:
+  testimonials:
+    output: true
+
 # Build settings
 theme: jekyll-theme-minimal
 plugins:

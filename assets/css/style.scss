@@ -3,6 +3,11 @@
 
 @import "{{ site.theme }}";
 
+.main-content {
+  display: flex;
+  flex-direction: column;
+}
+
 #social-links {
   display: grid;
   background: inherit;
@@ -26,6 +31,33 @@
 
 #logo:hover {
   border-color: $secondary-highlight-color;
+}
+
+.bottom {
+  margin-top: auto;
+}
+
+#testimonial-split {
+  margin-top: 3rem;
+}
+
+.testimonial {
+  text-align: center;
+  font-size: smaller;
+  border: none;
+  padding: 0 2rem 0.5rem 2rem;
+}
+
+.testimony {
+  font-style: italic;
+}
+
+.testimonial > .author {
+  text-align: right;
+}
+
+.testimonial > .author ::before {
+  content: "— ";
 }
 
 @keyframes toast-popup {
