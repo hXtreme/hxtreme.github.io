@@ -1,6 +1,7 @@
 ---
 layout: home
 title: "About Me"
+section_url: /
 ---
 
 Hello there, I'm Harsh (pronounced like "hush", but with a soft "r" sound)!

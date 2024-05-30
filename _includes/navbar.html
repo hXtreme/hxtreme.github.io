@@ -1,0 +1,22 @@
+<details id="nav">
+  <summary>
+    <h1>
+      {{ page.title }}
+      <span>
+        <i class="fa fa-angle-down"></i>
+      </span>
+    </h1>
+  </summary>
+  <hr>
+  <div id="nav-links">
+    {% for link in site.data.navigation.nav %}
+    {% if page.section_url != link.url %}
+    <h2>
+    <a href="{{ link.url }}" class="nav-link">
+        {{ link.title }}
+      </a>
+    </h2>
+    {% endif %}
+    {% endfor %}
+  </div>
+</details>

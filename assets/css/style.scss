@@ -8,6 +8,25 @@
   flex-direction: column;
 }
 
+#nav {
+  margin: 0 0 20px;
+  padding: 20px 20px 0;
+}
+
+#nav[open] {
+  background-color: #f8f8f8;
+  border: 1px solid $secondary-text-color;
+  border-radius: 5px;
+}
+
+#nav > summary {
+  list-style: none;
+}
+
+#nav > summary.hover {
+  cursor: pointer;
+}
+
 #social-links {
   display: grid;
   background: inherit;

@@ -3,4 +3,7 @@ layout: blank
 ---
 
 {%- include header.html -%}
-<section id="main-content">{{ content }}</section>
+<section id="main-content">
+  {%- include navbar.html -%}
+  {{ content }}
+</section>
