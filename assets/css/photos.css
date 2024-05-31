@@ -14,10 +14,10 @@
 @media screen and (max-width: 720px) {
   #me-and-family {
     grid-template-areas:
-      "img1 img2 img2"
-      "img1 img2 img2"
-      "img3 img4 img4"
-      "img3 img4 img4";
+      "img2 img2"
+      "img1 img3"
+      "img1 img3"
+      "img4 img4";
   }
 }
 
