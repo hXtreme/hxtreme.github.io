@@ -9,6 +9,11 @@
     "img1 img1 img3 img4";
 }
 
+#me-and-friends {
+  grid-template-areas:
+    "img2 img1 img1 img1";
+}
+
 
 /* Mobile layouots for various albums */
 @media screen and (max-width: 720px) {
@@ -18,6 +23,12 @@
       "img1 img3"
       "img1 img3"
       "img4 img4";
+  }
+
+  #me-and-friends {
+    grid-template-areas:
+      "img1"
+      "img2";
   }
 }
 
