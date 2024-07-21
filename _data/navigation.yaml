@@ -1,5 +1,7 @@
 nav:
   - title: About Me
     url: /
+  - title: Dev Log
+    url: /dev-log
   - title: Photos
     url: /photos

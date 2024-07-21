@@ -1,0 +1,17 @@
+---
+layout: default
+title: Dev-Log
+section_url: /dev-log
+---
+
+<span style="text-align: left;">
+  <small>{{ page.date | date: "%Y, %b %-d" }}</small>
+  <span style="float: right;">
+    {% if page.tags.size > 0 %}
+    🏷 <em><small>{{ page.tags | sort | join: "</small></em> 🏷 <small><em>" }}</small></em>
+    {% endif %}
+  </span>
+</span>
+<h2>{{ page.heading }}</h2>
+
+{{content}}

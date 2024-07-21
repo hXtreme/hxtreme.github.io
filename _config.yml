@@ -20,6 +20,7 @@
 
 title: Harsh Parekh
 logo: /assets/img/logo.png
+author: Harsh Parekh
 email: harsh_parekh@outlook.com
 description: >- # this means to ignore newlines until "baseurl:"
   This is my personal website where I share things I find interesting,
@@ -33,6 +34,19 @@ github_username: hXtreme
 collections:
   testimonials:
     output: true
+  dev-log:
+    output: true
+
+defaults:
+  -
+    scope:
+      path: "" # Look at all files
+      type: dev-log # Restrict to dev-log collection
+    values:
+      layout: dev-log
+      title: Dev Log
+      section_url: /dev-log
+
 
 # Build settings
 theme: jekyll-theme-minimal

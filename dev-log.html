@@ -1,0 +1,31 @@
+---
+layout: default
+title: Dev-Log
+section_url: /dev-log
+stylesheets: []
+---
+
+<!-- Hack for using a collection name that has a dash -->
+{% for collection in site.collections %}
+{% if collection.label == "dev-log" %}
+{% assign dev_logs = collection.docs %}
+{% endif %}
+{% endfor %}
+
+<!-- Display Latest Log -->
+{% if dev_logs.size > 0 %}
+{% assign latest_log = dev_logs.first %}
+
+<span style="text-align: left;">
+  <small>Latest</small>
+  <span style="float: right;">
+    {% if latest_log.tags.size > 0 %}
+    🏷 <em><small>{{ latest_log.tags | sort | join: "</small></em> 🏷 <small><em>" }}</small></em>
+    {% endif %}
+  </span>
+</span>
+<h2>{{ latest_log.heading }}</h2>
+
+{{ latest_log.content }}
+
+{% endif %}
