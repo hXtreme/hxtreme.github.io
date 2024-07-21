@@ -8,15 +8,16 @@
     </h1>
   </summary>
   <hr>
+  {% assign page_url = page.url | split: "." | first %}
   <div id="nav-links">
     {% for link in site.data.navigation.nav %}
-    {% if page.section_url != link.url %}
+    {% unless link.url == page_url %}
     <h2>
     <a href="{{ link.url }}" class="nav-link">
         {{ link.title }}
-      </a>
+    </a>
     </h2>
-    {% endif %}
+    {% endunless %}
     {% endfor %}
   </div>
 </details>
