@@ -46,6 +46,8 @@ defaults:
       layout: dev-log
       title: Dev Log
       section_url: /dev-log
+      stylesheets: ["/assets/css/code_block.css"]
+      javascripts: ["/assets/js/code_block.js"]
 
 
 # Build settings
