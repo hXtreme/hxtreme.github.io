@@ -4,14 +4,7 @@ title: Dev-Log
 section_url: /dev-log
 ---
 
-<span style="text-align: left;">
-  <small>{{ page.date | date: "%Y, %b %-d" }}</small>
-  <span style="float: right;">
-    {% if page.tags.size > 0 %}
-    🏷 <em><small>{{ page.tags | sort | join: "</small></em> 🏷 <small><em>" }}</small></em>
-    {% endif %}
-  </span>
-</span>
-<h2>{{ page.heading }}</h2>
+{% include log_header.html date=page.date tags=page.tags %}
+{% include log_navbar.html title=page.heading %}
 
 {{content}}
