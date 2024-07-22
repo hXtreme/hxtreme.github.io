@@ -1,4 +1,4 @@
-<details id="nav">
+<details class="nav">
   <summary>
     <h1>
       {{ page.title }}
@@ -9,7 +9,7 @@
   </summary>
   <hr>
   {% assign page_url = page.url | split: "." | first %}
-  <div id="nav-links">
+  <div class="nav-links">
     {% for link in site.data.navigation.nav %}
     {% unless link.url == page_url %}
     <h2>
