@@ -1,0 +1,26 @@
+<!-- Hack for using a collection name that has a dash -->
+{% for collection in site.collections %}
+{% if collection.label == "dev-log" %}
+{% assign dev_logs = collection.docs | sort: "date" | reverse %}
+{% endif %}
+{% endfor %}
+
+<!-- Navbar with list of all logs -->
+<details id="log-nav" class="nav">
+  <summary>
+    <h2>
+      {{ include.title }}
+      {% if dev_logs.size > 1 %}
+      <span><i class="fa fa-angle-down"></i></span>
+      {% endif %}
+    </h2>
+  </summary>
+  <!-- Here are all the dev logs -->
+   <div class="nav-links">
+    {% for dev_log in dev_logs %}
+    {% unless include.title == dev_log.heading %}
+    <h2><a href="{{ dev_log.url }}">{{ dev_log.heading }}</a></h2>
+    {% endunless %}
+    {% endfor %}
+   </div>
+</details>

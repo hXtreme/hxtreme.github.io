@@ -11,20 +11,13 @@
 
 #nav {
   margin: 0 0 20px;
-  padding: 20px 20px 0;
 }
 
-#nav[open] {
-  background-color: #f8f8f8;
-  border: 1px solid $secondary-text-color;
-  border-radius: 5px;
-}
-
-#nav > summary {
+details.nav > summary {
   list-style: none;
 }
 
-#nav > summary.hover {
+details.nav > summary.hover {
   cursor: pointer;
 }
 
@@ -95,6 +88,6 @@
   border-radius: 2px;
   border: 1px solid $secondary-text-color;
   animation-name: toast-popup;
-  animation-timing-function: linear;
+  animation-timing-function:cubic-bezier(0.445, 0.05, 0.55, 0.95);
   animation-duration: 4s;
 }

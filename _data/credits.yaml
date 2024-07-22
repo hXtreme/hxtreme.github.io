@@ -1,0 +1,7 @@
+assets:
+  images:
+    - name: There, I fixed it
+      location: dev-log/there_i_fixed_it-dave_walker.jpg
+      author: Dave Walker
+      src: https://www.flickr.com/photos/ffg/5696784314
+      desc: Car held together by duct tape

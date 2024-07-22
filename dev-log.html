@@ -1,0 +1,24 @@
+---
+layout: default
+title: Dev-Log
+section_url: /dev-log
+stylesheets:
+  - /assets/css/code_block.css
+javascripts:
+  - /assets/js/code_block.js
+---
+
+<!-- Hack for using a collection name that has a dash -->
+{% for collection in site.collections %}
+{% if collection.label == "dev-log" %}
+{% assign dev_logs = collection.docs | sort: "date" | reverse %}
+{% endif %}
+{% endfor %}
+
+<!-- Display Latest Log -->
+{% if dev_logs.size > 0 %}
+{% assign latest_log = dev_logs.first %}
+{% include log_header.html tags=latest_log.tags %}
+{% include log_navbar.html title=latest_log.heading %}
+{{ latest_log.content }}
+{% endif %}

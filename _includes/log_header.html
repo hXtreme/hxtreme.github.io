@@ -1,0 +1,9 @@
+<span style="text-align: left;">
+  <small>{{include.date | date: "%Y, %b %-d" | default: "Latest" }}</small>
+  {% if include.tags.size > 0 %}
+  <span style="float: right;">
+    🏷 <em><small>{{ include.tags | sort | join: "</small></em> 🏷 <small><em></em>" }}</small></em>
+  </span>
+  {% endif %}
+</span>
+

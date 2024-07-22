@@ -17,6 +17,13 @@
   <!-- js -->
   <script type="text/javascript" src="{{ '/assets/js/notification.js' | relative_url }}"></script>
 
+  <!-- Any page-specific javascripts -->
+  {% if page.javascripts %}
+    {% for javascript in page.javascripts %}
+      <script tyle="text/javascript" src="{{ javascript | append: "?v=" | append: site.github.build_revision | relative_url }}" defer></script>
+    {% endfor %}
+  {% endif %}
+
   <!--[if lt IE 9]>
   <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
   <![endif]-->
