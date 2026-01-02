@@ -20,10 +20,11 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"eamodio.gitlens",
-				"chrisbibby.hide-git-ignored",
-				"EditorConfig.EditorConfig"
-			]
+                "eamodio.gitlens",
+                "chrisbibby.hide-git-ignored",
+                "EditorConfig.EditorConfig",
+                "Shopify.ruby-lsp"
+            ]
 		}
 	}
 
