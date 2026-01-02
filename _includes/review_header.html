@@ -1,0 +1,14 @@
+<span style="text-align: left;">
+  <small>{{ include.date | date: "%Y, %b %-d" | default: "Latest" }}</small>
+  {% if include.where %}
+  <span style="float: right;">
+    📍 <em><small>
+      {% if include.where.url %}
+      <a href="{{ include.where.url }}" target="_blank">{{ include.where.name }}</a>
+      {% else %}
+      {{ include.where.name }}
+      {% endif %}
+    </small></em>
+  </span>
+  {% endif %}
+</span>

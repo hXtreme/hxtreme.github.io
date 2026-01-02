@@ -1,0 +1,22 @@
+<div class="star-ratings">
+  <div class="rating-row">
+    <span class="rating-label">Overall:</span>
+    <span class="stars">{% include stars.html rating=include.ratings.overall %}</span>
+  </div>
+  <div class="rating-row">
+    <span class="rating-label">Ingredients:</span>
+    <span class="stars">{% include stars.html rating=include.ratings.ingredients %}</span>
+  </div>
+  <div class="rating-row">
+    <span class="rating-label">Sweet:</span>
+    <span class="stars">{% include stars.html rating=include.ratings.sweet %}</span>
+  </div>
+  <div class="rating-row">
+    <span class="rating-label">Citrus:</span>
+    <span class="stars">{% include stars.html rating=include.ratings.citrus %}</span>
+  </div>
+  <div class="rating-row">
+    <span class="rating-label">Crunch:</span>
+    <span class="stars">{% include stars.html rating=include.ratings.crunch %}</span>
+  </div>
+</div>

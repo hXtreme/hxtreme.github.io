@@ -36,6 +36,8 @@ collections:
     output: true
   dev-log:
     output: true
+  beet-salad:
+    output: true
 
 defaults:
   -
@@ -48,6 +50,15 @@ defaults:
       section_url: /dev-log
       stylesheets: ["/assets/css/code_block.css"]
       javascripts: ["/assets/js/code_block.js"]
+  -
+    scope:
+      path: ""
+      type: beet-salad
+    values:
+      layout: beet-salad
+      title: Beet Salad
+      section_url: /beet-salad
+      stylesheets: ["/assets/css/beet_salad.css"]
 
 
 # Build settings

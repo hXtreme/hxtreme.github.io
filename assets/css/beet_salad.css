@@ -1,0 +1,57 @@
+---
+---
+
+/* Star Ratings Container */
+.star-ratings {
+  margin: 20px 0;
+  padding: 15px;
+  background: #f8f8f8;
+  border-radius: 5px;
+  border: 1px solid #e5e5e5;
+}
+
+.rating-row {
+  display: flex;
+  align-items: center;
+  margin: 8px 0;
+}
+
+.rating-label {
+  display: inline-block;
+  width: 120px;
+  font-weight: 600;
+  color: #393939;
+  font-size: 14px;
+}
+
+.stars {
+  display: inline-flex;
+  gap: 3px;
+}
+
+/* Star Styling */
+.star-filled {
+  color: #f4a623;
+}
+
+.star-empty {
+  color: #d0d0d0;
+}
+
+/* Methodology Section */
+#methodology {
+  margin-bottom: 30px;
+}
+
+#methodology ul {
+  margin-left: 20px;
+}
+
+#methodology li {
+  margin: 8px 0;
+}
+
+/* Review Navigation */
+#review-nav {
+  margin: 20px 0;
+}

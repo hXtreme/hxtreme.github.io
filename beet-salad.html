@@ -1,0 +1,41 @@
+---
+layout: default
+title: Beet Salad
+section_url: /beet-salad
+stylesheets:
+  - /assets/css/beet_salad.css
+---
+
+<!-- Hack for using a collection name that has a dash -->
+{% for collection in site.collections %}
+{% if collection.label == "beet-salad" %}
+{% assign beet_salad_reviews = collection.docs | sort: "path" | reverse %}
+{% endif %}
+{% endfor %}
+
+<!-- Methodology Section -->
+<section id="methodology">
+  <h2>Rating Methodology</h2>
+  <p>
+    Each beet salad is evaluated on a 5-star scale across the following categories:
+  </p>
+  <ul>
+    <li><strong>Overall:</strong> The complete experience - taste, presentation, value, and satisfaction</li>
+    <li><strong>Ingredients:</strong> Quality, freshness, and variety of components</li>
+    <li><strong>Sweet:</strong> Balance of natural sweetness from beets and other elements</li>
+    <li><strong>Citrus:</strong> Brightness and acidity from citrus notes</li>
+    <li><strong>Crunch:</strong> Textural contrast from nuts, seeds, or crispy elements</li>
+  </ul>
+</section>
+
+<hr>
+
+<!-- Display Latest Review -->
+{% if beet_salad_reviews.size > 0 %}
+{% assign latest_review = beet_salad_reviews.first %}
+{% assign latest_number = latest_review.path | split: "/" | last | split: "." | first %}
+{% include review_header.html date=latest_review.date where=latest_review.where %}
+{% include review_navbar.html number=latest_number title=latest_review.heading %}
+{% include star_ratings.html ratings=latest_review.ratings %}
+{{ latest_review.content }}
+{% endif %}

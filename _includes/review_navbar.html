@@ -1,0 +1,27 @@
+<!-- Hack for using a collection name that has a dash -->
+{% for collection in site.collections %}
+{% if collection.label == "beet-salad" %}
+{% assign beet_salad_reviews = collection.docs | sort: "path" | reverse %}
+{% endif %}
+{% endfor %}
+
+<!-- Navbar with list of all reviews -->
+<details id="review-nav" class="nav">
+  <summary>
+    <h2>
+      {{ include.number }}: {{ include.title }}
+      {% if beet_salad_reviews.size > 1 %}
+      <span><i class="fa fa-angle-down"></i></span>
+      {% endif %}
+    </h2>
+  </summary>
+  <!-- Here are all the beet salad reviews -->
+   <div class="nav-links">
+    {% for review in beet_salad_reviews %}
+    {% unless include.title == review.heading %}
+    {% assign review_number = review.path | split: "/" | last | split: "." | first %}
+    <h2><a href="{{ review.url }}">{{ review_number }}: {{ review.heading }}</a></h2>
+    {% endunless %}
+    {% endfor %}
+   </div>
+</details>

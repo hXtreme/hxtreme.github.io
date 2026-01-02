@@ -1,0 +1,8 @@
+{% assign rating = include.rating | floor %}
+{% for i in (1..5) %}
+{% if i <= rating %}
+<i class="fa fa-star star-filled"></i>
+{% else %}
+<i class="fa fa-star star-empty"></i>
+{% endif %}
+{% endfor %}
