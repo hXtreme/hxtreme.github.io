@@ -35,7 +35,7 @@ stylesheets:
 {% assign latest_review = beet_salad_reviews.first %}
 {% assign latest_number = latest_review.path | split: "/" | last | split: "." | first %}
 {% include review_header.html date=latest_review.date where=latest_review.where %}
-{% include review_navbar.html number=latest_number title=latest_review.heading %}
+{% include review_navbar.html number=latest_number title=latest_review.heading current_url=latest_review.url %}
 {% include star_ratings.html ratings=latest_review.ratings %}
 {{ latest_review.content }}
 {% endif %}

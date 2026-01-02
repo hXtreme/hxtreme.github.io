@@ -6,7 +6,7 @@ section_url: /beet-salad
 
 {% assign entry_number = page.path | split: "/" | last | split: "." | first %}
 {% include review_header.html date=page.date where=page.where %}
-{% include review_navbar.html number=entry_number title=page.heading %}
+{% include review_navbar.html number=entry_number title=page.heading current_url=page.url %}
 {% include star_ratings.html ratings=page.ratings %}
 
 {{content}}

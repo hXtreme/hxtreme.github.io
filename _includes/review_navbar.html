@@ -18,7 +18,7 @@
   <!-- Here are all the beet salad reviews -->
    <div class="nav-links">
     {% for review in beet_salad_reviews %}
-    {% unless include.title == review.heading %}
+    {% unless review.url == include.current_url %}
     {% assign review_number = review.path | split: "/" | last | split: "." | first %}
     <h2><a href="{{ review.url }}">{{ review_number }}: {{ review.heading }}</a></h2>
     {% endunless %}
