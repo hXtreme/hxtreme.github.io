@@ -9,3 +9,6 @@ _site/
 .sass-cache/
 .jekyll-cache/
 .jekyll-metadata
+
+# Claude Code
+CLAUDE.md
