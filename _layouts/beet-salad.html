@@ -9,6 +9,6 @@ section_url: /beet-salad
 {% include review_navbar.html number=entry_number title=page.heading current_url=page.url %}
 {% include image.html image=page.banner.image caption=page.banner.caption %}
 {% include star_ratings.html ratings=page.ratings %}
-<!-- TODO: List key ingredients from tags -->
+{% include ingredients_list.html tags=page.tags %}
 
 {{content}}

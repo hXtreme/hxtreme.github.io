@@ -36,6 +36,8 @@ stylesheets:
 {% assign latest_number = latest_review.path | split: "/" | last | split: "." | first %}
 {% include review_header.html date=latest_review.date where=latest_review.where %}
 {% include review_navbar.html number=latest_number title=latest_review.heading current_url=latest_review.url %}
+{% include image.html image=latest_review.banner.image caption=latest_review.banner.caption %}
 {% include star_ratings.html ratings=latest_review.ratings %}
+{% include ingredients_list.html tags=latest_review.tags %}
 {{ latest_review.content }}
 {% endif %}

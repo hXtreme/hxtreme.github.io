@@ -1,0 +1,11 @@
+{% if include.tags and include.tags.size > 0 %}
+<div class="ingredients-list">
+  <h3>Key Ingredients</h3>
+  <ul class="ingredients">
+    {% assign sorted_tags = include.tags | sort %}
+    {% for ingredient in sorted_tags %}
+    <li class="ingredient-tag">{{ ingredient }}</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
