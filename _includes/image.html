@@ -1,4 +1,5 @@
 <div class="photo" style="text-align: center;">
-  <img src="{{ include.image }}" alt="{{ include.alt | default: include.caption }}">
+  <img src="{{ include.image }}" alt="{{ include.alt | default: include.caption }}" {{ include.style | default: "" }}>
+  <br>
   <span style="text-align: center;">{{ include.caption }}</span>
 </div>
