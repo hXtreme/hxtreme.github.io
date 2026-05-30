@@ -14,4 +14,3 @@ function gen_toast(msg, expire = 4000) {
   body.appendChild(toast);
   setTimeout(function () { body.removeChild(toast); }, expire);
 }
-
