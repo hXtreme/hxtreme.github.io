@@ -1,0 +1,7 @@
+technical_topics:
+  - title: Async-Await Primer
+    preview: /assets/img/presentations/async-await.png
+    slides: /presentations/async-await
+  - title: FastAPI Introduction
+    preview: /assets/img/presentations/fastapi-intro.png
+    slides: /presentations/fastapi-intro

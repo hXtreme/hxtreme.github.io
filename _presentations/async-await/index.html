@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" id="theme" />
+    <link rel="stylesheet" href="plugin/highlight/zenburn.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="plugin/customcontrols/style.css">
+
+
+    <link rel="stylesheet" href="css/slide-footnotes.css" />
+
+    <script defer src="dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Async-Await Paradigm
+_Presented by Harsh_
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Parallelism v/s Concurrency
+
+##### Parallelism -- many tasks executing at the same time
+
+##### Concurrency -- many tasks in-flight at the same time
+
+#### _Parallelism `$\Rightarrow$` Concurrency_
+#### _Concurrency `$\nRightarrow$` Parallelism_
+</div>
+
+<aside class="notes"><ul>
+<li>Concurrency v/s Parallelism example: One person juggling many tasks, many people each handling one task at a time.</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Async-Await
+
+#### Concurrency framework
+- Single threaded<sup id="fnref:1" role="doc-noteref">1</sup>, Single process
+- Cooperative-Multitasking model
+- Non-sequential execution, sequential semantics.
+
+
+
+<div class="footnotes" role="doc-endnotes">
+<ol>
+<li id="fn:1" role="doc-endnote" class="footnote"><p>
+
+Most serious implementations have multiple threads running async tasks, as well as a thread pool of executors for non-async CPU intensive tasks.
+
+</p></li></ol>
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>Single threaded -- Partly simplifies implementation, partly enables clean sequential semantics.</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Async-Await
+
+#### Concurrency framework
+- Cooperative-Multitasking model
+    Task decides when to give up execution and let other task run. Once a task gives up execution control it can't *steal* it back.
+</div>
+
+<aside class="notes"><ul>
+<li>❓Ask: What would happen if a task is non-cooperative, and doesn&#39;t give up execution?</li>
+<li>❓Ask: Why is this not a problem in multi-threaded application?</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Async-Await
+
+#### Concurrency framework
+- Non-sequential execution, sequential semantics.
+<img src="Excalidraw/Drawing 2026-05-27 16.20.08.excalidraw.svg" alt="" style="width: .svgpx; object-fit: fill">
+
+- Hard to write code that directly contain this non-sequential nature.
+    _ex. Extensive callbacks (callback hell), managing Futures and Promises_
+</div>
+
+<aside class="notes"><ul>
+<li>Because of multi-tasking, the actual execution of code can be very different from the code you write.</li>
+<li>This would make it very hard to reason about the execution as well as any bugs since the program trace could be very unexpected.</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Async-Await
+
+#### Concurrency framework
+<img src="Excalidraw/Drawing 2026-05-27 16.20.08.excalidraw.svg" alt="" style="width: .svgpx; object-fit: fill">
+
+<img src="Excalidraw/Drawing 2026-05-27 17.19.46.excalidraw.svg" alt="" style="width: .svgpx; object-fit: fill">
+</div>
+
+<aside class="notes"><ul>
+<li>❓ What if read failed? Would a2 never be called? Should it re-raise when future is accessed -- so accessing a simple <code>Future&lt;int&gt;</code> can cause a db exception, or permission denied error, ...</li>
+<li>❓ How does the stack trace look like if the task failed?</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Async-Await
+
+#### Concurrency framework
+- Sequential semantics -- Language gives features to write sequential code with special keywords that hides the non-sequential nature of execution.
+    ex. async, await, yield
+
+<img src="Excalidraw/Drawing 2026-05-27 17.31.14.excalidraw.svg" alt="" style="width: .svgpx; object-fit: fill">
+</div>
+
+<aside class="notes"><ul>
+<li>async: Mark a function to return a Future</li>
+<li>await: Schedule following code after future becomes available</li>
+<li>yield: (advanced) allow execution to pause.</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Async-Await
+
+### Key Concepts
+
+- Task Queue
+- Event Loop
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Async-Await
+
+#### Key Concepts -- Task Queue
+- Task(fn, is_ready) -- bock of un-interrupted compute
+- fn: the computation to perform, may return a result or continuing task.
+- is_ready: true if all dependencies are available, false otherwise.<sup id="fnref:2" role="doc-noteref">1</sup>
+
+
+<div class="footnotes" role="doc-endnotes">
+<ol>
+<li id="fn:2" role="doc-endnote" class="footnote"><p>
+
+Usually implemented as a state machine/multiple queues.
+
+</p></li></ol>
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Async-Await
+
+#### Key Concepts -- Event Loop
+- Event loop is to tasks what scheduler is to threads.
+- Manages Task lifecycle
+    1. moves tasks to correct queues, and
+    2. picks what's the next task to run (usually FIFO).
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Async-Await
+
+#### Key Concepts -- Event Loop
+
+```python
+while True:
+    # Get the next ready Task.
+    task = task_queue.pop_first_ready_task()
+
+    # Let the task Execute, it could either complete or run partway and give up execution.
+    continuation = task.fn()
+
+    if continuation:
+        # The task gave up control, let it continue later.
+        task_queue.push(continuation)
+    ...
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Async-Await
+
+
+|                      | Async-Await          | Multi-Threaded                 | Multi-Processing                       |
+| -------------------- | -------------------- | ------------------------------ | -------------------------------------- |
+| Resource Requirement | Very Light           | Light                          | Heavy                                  |
+| Data-sharing         | Easy                 | Thread Safety/Locking Required | Shared Memory Setup + Locking Required |
+| Concurrency<sup id="fnref:3" role="doc-noteref">1</sup>| > 1000 (RAM bounded) | ~ 100s (CPU Thread bounded)    | < ~ 100s (CPU core bounded)            |
+| Parallelism          | No<sup id="fnref:4" role="doc-noteref">2</sup>| Yes                            | Yes                                    |
+| Best usage Scenario  | IO bound workloads   | CPU bound                      | CPU bound + sparse sharing             |
+
+
+
+<div class="footnotes" role="doc-endnotes">
+<ol>
+<li id="fn:3" role="doc-endnote" class="footnote"><p>
+
+Mostly comparing consumer hardware
+
+</p></li><li id="fn:4" role="doc-endnote" class="footnote"><p>
+
+See note on second slide
+
+</p></li></ol>
+</div>
+</div></script></section></div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+	<script src="plugin/mermaid/mermaid.js"></script>
+	<script src="plugin/chart/chart.min.js"></script>
+	<script src="plugin/chart/plugin.js"></script>
+	<script src="plugin/customcontrols/plugin.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: 'plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+			]
+		},
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":960,"height":700,"margin":0.04,"controls":true,"progress":true,"slideNumber":false,"transition":"slide","transitionSpeed":"default"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>

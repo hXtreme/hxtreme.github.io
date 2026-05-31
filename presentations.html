@@ -1,0 +1,23 @@
+---
+layout: default
+title: Presentations
+section_url: /presentations
+stylesheets:
+- "/assets/css/presentations.css"
+---
+
+<p>
+  Some of my presentations
+</p>
+
+<h2>Software Engineering</h2>
+
+<div id="technical-topics-introductions" class="presentation-gallery">
+  {% for presentation in site.data.presentations.technical_topics %}
+  <div class="photo">
+    <a href="{{ presentation.slides }}">
+      <img src="{{ presentation.preview }}" alt="{{ presentation.title }}">
+    </a>
+  </div>
+  {% endfor %}
+</div>

@@ -38,6 +38,8 @@ collections:
     output: true
   beet-salad:
     output: true
+  presentations:
+    output: true
 
 defaults:
   -
