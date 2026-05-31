@@ -5,3 +5,28 @@ assets:
       author: Dave Walker
       src: https://www.flickr.com/photos/ffg/5696784314
       desc: Car held together by duct tape
+  softwares:
+    - name: Advanced Slides
+      location: presentations/
+      author: MSzturc
+      author_src: https://github.com/MSzturc
+      src: https://github.com/MSzturc/obsidian-advanced-slides
+      usage: creating markdown based slideshows in Obsidian
+    - name: reveal.js
+      location: presentations/
+      author: Hakim El Hattab
+      author_src: https://twitter.com/hakimel
+      src: https://revealjs.com/
+      usage: the tech powering the presentations
+    - name: Jekyll
+      location: /
+      author: jekyll
+      author_src: https://github.com/jekyll
+      src: https://github.com/jekyll/jekyll
+      usage: building this static website
+    - name: minimal
+      location: /
+      author: Steve Smith
+      author_src: https://github.com/orderedlist
+      src: https://github.com/orderedlist/minimal
+      usage: the starting design of this website
